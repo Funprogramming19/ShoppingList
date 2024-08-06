@@ -2,10 +2,10 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
     alias(libs.plugins.compose.compiler)
-    // alias(libs.plugins.ksp)
-    // alias(libs.plugins.hilt)
-    // alias(libs.plugins.room)
-    // alias(libs.plugins.kotlinx.serialization)
+    alias(libs.plugins.ksp)
+    alias(libs.plugins.hilt)
+    alias(libs.plugins.room)
+    alias(libs.plugins.kotlinx.serialization)
 }
 
 android {
@@ -52,6 +52,9 @@ android {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
+    room {
+        schemaDirectory("$projectDir/schemas")
+    }
 }
 
 dependencies {
@@ -63,18 +66,19 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
-    // implementation(libs.kotlinx.coroutines)
-    // implementation(libs.kotlinx.serialization.json)
-    // implementation(libs.datastore)
-    // implementation(libs.navigation.ui)
-    // implementation(libs.navigation.compose)
-    // implementation(libs.room.runtime)
-    // implementation(libs.room.ktx)
-    // ksp(libs.room.compiler)
-    // implementation(libs.hilt.android)
-    // ksp(libs.hilt.compiler)
-    // testImplementation(libs.navigation.testing)
-    // testImplementation(libs.kotlinx.coroutines.test)
+    implementation(libs.kotlinx.coroutines)
+    implementation(libs.kotlinx.serialization.json)
+    implementation(libs.datastore)
+    implementation(libs.navigation.ui)
+    implementation(libs.navigation.compose)
+    implementation(libs.room.runtime)
+    implementation(libs.room.ktx)
+    ksp(libs.room.compiler)
+    implementation(libs.hilt)
+    implementation(libs.hilt.navigation.compose)
+    ksp(libs.hilt.compiler)
+    testImplementation(libs.navigation.testing)
+    testImplementation(libs.kotlinx.coroutines.test)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
